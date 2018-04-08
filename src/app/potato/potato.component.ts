@@ -8,12 +8,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PotatoComponent implements OnInit {
 
-  data : any;
+  data: any;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get('/potato').subscribe(data => {
+
+    this.http.get('api/').subscribe(data => {
+      this.data = data;
+    });
+  }
+
+  addPotato() {
+    this.http.post ('api/potato', { 'isActive' : 1 }).subscribe(data => {
       this.data = data;
     });
   }

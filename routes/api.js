@@ -12,32 +12,33 @@ router.get('/', function(req, res, next) {
   });
 });
 
-/* GET SINGLE BOOK BY ID */
-router.get('/:id', function(req, res, next) {
+/* GET SINGLE POTATO BY ID */
+router.get('potato/:id', function(req, res, next) {
   Potato.findById(req.params.id, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
 });
 
-/* SAVE POTATOES */
-router.post('/', function(req, res, next) {
-  Book.create(req.body, function (err, post) {
+/* SAVE POTATO */
+router.post('/potato', function(req, res, next) {
+  console.log('saving potato');
+  Potato.create(req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
 });
 
-/* UPDATE POTATOES */
-router.put('/:id', function(req, res, next) {
+/* UPDATE POTATO */
+router.put('potato/:id', function(req, res, next) {
   Potato.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
 });
 
-/* DELETE POTATOES */
-router.delete('/:id', function(req, res, next) {
+/* DELETE POTATO */
+router.delete('potato/:id', function(req, res, next) {
   Potato.findByIdAndRemove(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
