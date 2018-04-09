@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class PotatoComponent implements OnInit {
 
   data: any;
+  showPotato: boolean;
 
   constructor(private http: HttpClient) { }
 
@@ -16,6 +17,7 @@ export class PotatoComponent implements OnInit {
 
     this.http.get('api/').subscribe(data => {
       this.data = data;
+      this.showPotato = true;
     });
   }
 
@@ -23,6 +25,11 @@ export class PotatoComponent implements OnInit {
     this.http.post ('api/potato', { 'isActive' : 1 }).subscribe(data => {
       this.data = data;
     });
+  }
+
+  clickPotato() {
+    console.log('click');
+    this.showPotato = false;
   }
 
 }
